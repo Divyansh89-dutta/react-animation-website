@@ -1,13 +1,48 @@
-import { motion } from 'framer-motion'
-import React from 'react'
+import { motion } from "framer-motion";
 
-function Marquee({url,direction}) {
+
+const Marquee = ({ images, index }) => {
   return (
-    <div className='flex w-full py-8  gap-20 overflow-hidden'>
-      <motion.div initial={{x:direction === 'left' ? "0" : "-100%"}} animate={{x:direction === 'left' ? "-100%" : "0"}} transition={{ease:"linear", duration:80, repeat:Infinity}} className="flex pr-16 flex-shrink-0 gap-26">{url.map((items,index)=> <img key={index} src={items} className='w-32 flex-shrink-0'/>) }</motion.div>
-      <motion.div initial={{x:direction === 'left' ? "0" : "-100%"}} animate={{x:direction === 'left' ? "-100%" : "0"}} transition={{ease:"linear", duration:80, repeat:Infinity}} className="flex pr-16 flex-shrink-0 gap-26">{url.map((items,index)=> <img key={index} src={items} className='w-32 flex-shrink-0'/>) }</motion.div>
-    </div>
-  )
-}
+    <div className="flex py-7 lg:py-10 whitespace-nowrap overflow-hidden">
+      <motion.div
+        initial={{
+          x: index === 0 ? 0 : "-100%",
+        }}
+        animate={{
+          x: index === 0 ? "-100%" : 0,
+        }}
+        transition={{
+          duration: 15,
+          ease: "linear",
+          repeat: Infinity,
+        }}
+        className="px-10 lg:px-14 flex gap-20 lg:gap-28 flex-shrink-0"
+      >
+        {images.map((image, index) => (
+          <img key={index} src={image} className="w-32 flex-shrink-0" />
+        ))}
+      </motion.div>
 
-export default Marquee
+      <motion.div
+        initial={{
+          x: index === 0 ? 0 : "-100%",
+        }}
+        animate={{
+          x: index === 0 ? "-100%" : 0,
+        }}
+        transition={{
+          duration: 15,
+          ease: "linear",
+          repeat: Infinity,
+        }}
+        className="px-10 lg:px-14 flex gap-20 lg:gap-28 flex-shrink-0"
+      >
+        {images.map((image, index) => (
+          <img key={index} src={image} className="w-32 flex-shrink-0" />
+        ))}
+      </motion.div>
+    </div>
+  );
+};
+
+export default Marquee;

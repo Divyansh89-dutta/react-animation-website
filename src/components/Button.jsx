@@ -1,20 +1,47 @@
-// import { motion } from "framer-motion";
-import React, { useState } from "react";
-import { BsArrowReturnRight } from "react-icons/bs";
-function Button({ title = "Start a Project" }) {
-const[ishover,setHover]=useState(false);
+import gsap from "gsap";
+import { useRef } from "react";
+import { IoIosReturnRight } from "react-icons/io";
+
+const Button = ({
+  title = "Start a Project",
+  icon = true,
+  bgColor = "bg-white",
+  textColor = "text-black",
+  opacity = "opacity-100",
+  width = "w-36",
+  height = "h-9",
+  fontSize = "text-sm",
+}) => {
+  const buttonRef = useRef(null);
+
+  const btnAnimation = (yOffset) => {
+    gsap.to(buttonRef.current.querySelectorAll(".frame-content"), {
+      yPercent: yOffset,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+  };
+
   return (
-    <div className="w-40 h-10 bg-white text-zinc-600 text-md font-semibold rounded-full overflow-hidden">
-      <div onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)} className={`flex items-center justify-between px-4 py-2 duration-500 ${ishover ? `-mt-10` : ``}`}>
-    {title}
-      <BsArrowReturnRight className="text-black text-sm mt-0.5" />
-    </div>
-    <div className="flex items-center justify-between px-4 py-2 ">
-    {title}
-      <BsArrowReturnRight className="text-black text-sm mt-0.5" />
-    </div>
+    <div
+      ref={buttonRef}
+      onMouseEnter={() => btnAnimation(-100)}
+      onMouseLeave={() => btnAnimation(0)}
+      className={`button select-none ${width} ${height} bg-gray-400 flex justify-center items-center ${fontSize} font-light rounded-full cursor-pointer z-10 ${bgColor} ${textColor} ${opacity} transition-opacity duration-[420ms]`}
+    >
+      <div className="frame h-[85%] overflow-hidden">
+        <div className="frame-content h-full flex items-center justify-center gap-3">
+          <span>{title}</span>
+          {icon && <IoIosReturnRight />}
+        </div>
+
+        <div className="frame-content h-full flex items-center justify-center gap-3">
+          <span>{title}</span>
+          {icon && <IoIosReturnRight />}
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Button;

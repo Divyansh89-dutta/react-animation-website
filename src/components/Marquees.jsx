@@ -1,46 +1,43 @@
-import React from "react";
 import Marquee from "./Marquee";
 
-function Marquees() {
-  const img = [
+const Marquees = () => {
+  const images = [
     [
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d275e12177716cb3f2ea_basf.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d2754882567001f1ee80_spotify.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d27505e3a120466b87aa_singularity.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d275c2fcf540272672ef_intenseeye.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d27518bb52e4d642644e_bcgp.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d2759c8b021207af521b_yahoo.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d2756e8df24e52915c71_flowcode.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d275e1d5aa08ccc379dd_ypo.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d275909535ff431975cf_lavender.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d36963b956910ca67534_remind.svg ",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2ce14e6c85b010c2e1e3c_Logo%20White%201.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d2753d48394d8adeff14_rocket.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d275a4f001b08a4e28bc_weglot.svg",
+      "assets/images/marquee/marquee1_1.svg",
+      "assets/images/marquee/marquee1_2.svg",
+      "assets/images/marquee/marquee1_3.svg",
+      "assets/images/marquee/marquee1_4.svg",
+      "assets/images/marquee/marquee1_5.svg",
+      "assets/images/marquee/marquee1_6.svg",
+      "assets/images/marquee/marquee1_7.svg",
+      "assets/images/marquee/marquee1_8.svg",
+      "assets/images/marquee/marquee1_9.svg",
     ],
+
     [
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d275e12177716cb3f2ea_basf.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d2754882567001f1ee80_spotify.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d27505e3a120466b87aa_singularity.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d275c2fcf540272672ef_intenseeye.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d27518bb52e4d642644e_bcgp.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d2759c8b021207af521b_yahoo.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d2756e8df24e52915c71_flowcode.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d275e1d5aa08ccc379dd_ypo.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d275909535ff431975cf_lavender.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d36963b956910ca67534_remind.svg ",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2ce14e6c85b010c2e1e3c_Logo%20White%201.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d2753d48394d8adeff14_rocket.svg",
-      "https://assets-global.website-files.com/6334198f239547d0f9cd84b3/65b2d275a4f001b08a4e28bc_weglot.svg",
+      "assets/images/marquee/marquee2_1.svg",
+      "assets/images/marquee/marquee2_2.svg",
+      "assets/images/marquee/marquee2_3.svg",
+      "assets/images/marquee/marquee2_4.svg",
+      "assets/images/marquee/marquee2_5.svg",
+      "assets/images/marquee/marquee2_6.svg",
+      "assets/images/marquee/marquee2_7.svg",
+      "assets/images/marquee/marquee2_8.svg",
+      "assets/images/marquee/marquee2_9.svg",
     ],
   ];
+
   return (
-    <div className="relative w-full py-26 overflow-hidden">
-      {img.map((item, index) => (
-        <Marquee key={index} url={item} direction={index === 0 ? `left`: `right`} />
+    <div className="relative mt-10">
+      <div className="absolute top-0 left-0 z-10 w-[3rem] md:w-[6rem] lg:w-[27rem] h-full bg-gradient-to-r from-zinc-900 to-transparent"></div>
+
+      {images.map((elem, index) => (
+        <Marquee key={index} images={elem} index={index} />
       ))}
+
+      <div className="absolute top-0 right-0 z-10 w-[3rem] md:w-[6rem] lg:w-[27rem] h-full bg-gradient-to-l from-zinc-900 to-transparent"></div>
     </div>
   );
-}
+};
 
 export default Marquees;
